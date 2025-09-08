@@ -1,0 +1,29 @@
+{
+  "name": "finddatainbigpdfs",
+  "version": "1.0.0",
+  "description": "Ferramenta para buscar texto em PDFs, incluindo arquivos escaneados.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "pdf",
+    "ocr",
+    "busca",
+    "node.js",
+    "express"
+  ],
+  "author": "Eike",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "multer": "^2.0.2",
+    "pdf-parse": "^1.1.1",
+    "pdf-poppler": "^0.2.1",
+    "tesseract.js": "^6.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
