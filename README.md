@@ -1,5 +1,8 @@
 # FindDataInBigPDFs
 
+### Funcionamento: precisa ser local, porque o github pages não roda nodeJS!
+
+
 Ferramenta para buscar texto em PDFs, incluindo arquivos escaneados, utilizando Node.js e tecnologias de OCR (Reconhecimento Óptico de Caracteres).
 
 ---
