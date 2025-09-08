@@ -1,7 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
-const fs = require('fs/promises'); // Versão de promises
+const fs = require('fs/promises'); // Usando a versão de promises
 const fsSync = require('fs'); // Para usar o existsSync
 const pdf = require('pdf-parse');
 const Tesseract = require('tesseract.js');
@@ -33,8 +33,14 @@ const upload = multer({
     }
 });
 
-// Servir front-end estático
-app.use(express.static('public'));
+// AQUI ESTÁ A LÓGICA DE SERVIÇO DO FRONTEND.
+// Serve o arquivo index.html a partir da raiz do projeto.
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Serve outros arquivos estáticos da raiz do projeto (CSS, JS, etc.)
+app.use(express.static(__dirname));
 app.use(express.urlencoded({ extended: true }));
 
 // Função para extrair texto de PDFs pesquisáveis
@@ -146,6 +152,7 @@ app.post('/upload', upload.single('pdf'), async (req, res) => {
             Erro: ${err.message} <br><a href="/">Voltar</a>
         `);
     } finally {
+        // Garantir que o arquivo seja sempre removido
         if (pdfPath) {
             await fs.unlink(pdfPath).catch(err => console.error('Erro ao remover arquivo temporário:', err));
         }
